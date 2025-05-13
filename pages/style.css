@@ -1,0 +1,133 @@
+button{
+background-color: rgb(0, 142, 142); 
+color:aliceblue;
+border: none;
+border-radius: 2px;
+font-family: sans-serif;
+}
+p{
+    
+    font-family: sans-serif;
+    color:rgb(0, 142, 142); 
+}
+#ToDo{
+    font-size: 40px;
+    margin: 10px;
+}
+#keep{
+    margin: 10px;
+    font-size: 15px;
+}
+#search{
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(221, 221, 221) ;
+    
+}
+#searchBtn{
+    border:none;
+    background-color: transparent;
+    width: auto;
+    
+}
+#options{
+  padding:10px;
+  
+    cursor: pointer;
+   :hover{
+    background-color:rgb(240, 240, 240);
+    transition: background-color 0.3s ease;
+   }
+}
+#input {
+    border: none; 
+    outline: none; 
+    padding: 10px;
+    font-size: 16px;
+  }
+  #search {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 25px; 
+  border: 1px solid #ccc; 
+  outline: none; 
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  width: 300px;
+  transition: all 0.3s ease; 
+}
+
+#search::placeholder {
+  color: #aaa; 
+}
+
+#search:focus {
+  border-color: #4caf98; 
+  box-shadow: 0 0 10px rgba(72, 213, 189, 0.5); 
+}
+
+#search:hover {
+  border-color: #4caf9b; 
+}
+#sidebar{
+  display: block;
+  width: 350px;
+}
+#place{
+  display:flex;
+ 
+}
+#the-list{
+  display:none;
+  width:min-content;
+  margin: 20px;
+  padding: 20px;
+}
+#Archive,#Planned,#Important{
+  padding:10px;
+  margin:0px;
+  font-family: sans-serif;
+  color:rgb(0, 142, 142); 
+  background-color: transparent;
+  border: none;
+  display: block;
+
+}
+#btnSearch{
+  padding: 0px;
+  margin: 0px;
+  width:20px;
+  display: inline-block;
+  
+}
+#btnSearch{
+  transition: transform 0.3s ease;
+  cursor: pointer;}
+#btnSearch:hover {
+  transform: scale(1.2); 
+}
+  
+
+#search{
+  display: inline-block;
+}
+#newList{
+  padding:10px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+}
+#newList:hover{
+  transform: scale(1.1);
+}
+#newTask{
+  padding:10px;
+  margin: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+}
+#newTask:hover{
+  transform: scale(1.1);
+}

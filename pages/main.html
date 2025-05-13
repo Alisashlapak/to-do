@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">  
+    <title></title>
+</head>
+<body>
+<div id="place">
+<div id="sidebar">
+    <p id="ToDo">ToDo</p>
+    <p id="keep">Keep Your Life Organized</p>
+    <form action="/search" method="GET">
+        <input type="search" id="search" name="query" placeholder="Search for plans...">
+        <button id="searchBtn" type="submit"> <img id="btnSearch" src="/search.png" alt="search"></button>
+    </form>
+    <div id="options">
+        <button id="Archive">Archive</button>
+        <button id="Planned">Planned</button>
+        <button id="Important">Important</button>
+    </div>
+        <button id="newList">New list +</button>
+</div> 
+    <div id="the-list">
+        <input type="text" id="input" placeholder="List name" />
+        <button id="newTask">New Task +</button>
+    </div>
+</div>
+    <script src="main.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const newList = document.getElementById('newList');
+        newList.onclick = ()=>
+        document.getElementById('the-list').style.display = 'block';
+    </script>
+</body>
+</html>
