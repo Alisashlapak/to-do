@@ -24,6 +24,7 @@
 </div> 
     <div id="the-list">
         <input type="text" id="input" placeholder="List name" />
+        <div id="taskContainer"></div>
         <button id="newTask">New Task +</button>
     </div>
 </div>
@@ -31,8 +32,19 @@
     <script src="script.js"></script>
     <script>
         const newList = document.getElementById('newList');
+        const taskContainer = document.getElementById("taskContainer");
+        const newTask = document.getElementById('newTask');
         newList.onclick = ()=>
         document.getElementById('the-list').style.display = 'block';
+newTask.onclick = () => {
+    const lastInput = taskContainer.lastElementChild;
+    if (!lastInput || lastInput.value.trim() !== "") {
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.placeholder = "What's on your mind?";
+        taskContainer.appendChild(newInput);
+    }
+};
     </script>
 </body>
 </html>

@@ -10,29 +10,18 @@ app.get('/', (req, res) => {
 
 app.listen(3000);
 
-
-
 // 🔌 Підключення до MongoDB
 mongoose.connect('mongodb://localhost:27017/brodb')
   .then(() => console.log('✅ Підключено до MongoDB'))
   .catch((err) => console.error('❌ Помилка підключення:', err));
 
-// 📦 Схема юзера
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  age: Number,
-  email: { type: String, unique: true }
+const noteSchema = new mongoose.Schema({
+  textcontent: { type: String, required: true },
+  noteDate: { type: Date, default: Date.now } 
 });
 
 // 🔨 Модель
-const User = mongoose.model('User', userSchema);
-
-// ➕ Додавання нового юзера
-const bro = new User({
-  name: 'Бро',
-  age: 18,
-  email: 'bro@example.com'
-});
+const Note = mongoose.model('Note', noteSchema);
 
 bro.save()
   .then(() => {
