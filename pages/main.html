@@ -4,47 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">  
-    <title></title>
+    <title>ToDo App</title>
 </head>
 <body>
 <div id="place">
-<div id="sidebar">
-    <p id="ToDo">ToDo</p>
-    <p id="keep">Keep Your Life Organized</p>
-    <form action="/search" method="GET">
-        <input type="search" id="search" name="query" placeholder="Search for plans...">
-        <button id="searchBtn" type="submit"> <img id="btnSearch" src="/search.png" alt="search"></button>
-    </form>
-    <div id="options">
-        <button id="Archive">Archive</button>
-        <button id="Planned">Planned</button>
-        <button id="Important">Important</button>
-    </div>
+    <div id="sidebar">
+        <p id="ToDo">ToDo</p>
+        <p id="keep">Keep Your Life Organized</p>
+        <form action="/search" method="GET">
+            <input type="search" id="search" name="query" placeholder="Search for plans...">
+            <button id="searchBtn" type="submit"> <img id="btnSearch" src="/search.png" alt="search"></button>
+        </form>
+        <div id="options">
+            <button id="Archive">Archive</button>
+            <button id="Planned">Planned</button>
+            <button id="Important">Important</button>
+        </div>
         <button id="newList">New list +</button>
-</div> 
-    <div id="the-list">
+    </div> 
+    <div id="the-list" style="display: none;">
         <input type="text" id="input" placeholder="List name" />
         <div id="taskContainer"></div>
         <button id="newTask">New Task +</button>
     </div>
 </div>
-    <script src="main.js"></script>
-    <script src="script.js"></script>
-    <script>
-        const newList = document.getElementById('newList');
-        const taskContainer = document.getElementById("taskContainer");
-        const newTask = document.getElementById('newTask');
-        newList.onclick = ()=>
+<script src="main.js"></script>
+<script src="script.js"></script>
+<script>
+    const newList = document.getElementById('newList');
+    const taskContainer = document.getElementById("taskContainer");
+    const newTask = document.getElementById('newTask');
+
+    newList.onclick = () => {
         document.getElementById('the-list').style.display = 'block';
-newTask.onclick = () => {
-    const lastInput = taskContainer.lastElementChild;
-    if (!lastInput || lastInput.value.trim() !== "") {
-        const newInput = document.createElement('input');
-        newInput.type = 'text';
-        newInput.placeholder = "What's on your mind?";
-        taskContainer.appendChild(newInput);
-    }
-};
-    </script>
+    };
+
+    newTask.onclick = () => {
+        const lastInput = taskContainer.lastElementChild;
+        if (!lastInput || lastInput.value.trim() !== "") {
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.placeholder = "What's on your mind?";
+            newInput.id = 'noteInput';
+            taskContainer.appendChild(newInput);
+
+            const saveNoteBtn = document.createElement('button');
+            saveNoteBtn.id = 'saveNote';
+            saveNoteBtn.innerHTML = "Save Note"; // Adding text to button
+            taskContainer.appendChild(saveNoteBtn);
+
+            saveNoteBtn.onclick = async () => {
+                const noteInput = newInput;
+                const text = noteInput.value.trim();
+                if (text) {
+                    const response = await fetch('/add-note', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text })
+                    });
+                    // Optionally handle the response
+                    console.log(await response.json());
+                    // You can clear the input after saving or update UI
+                    noteInput.value = '';
+                }
+            };
+        }
+    };
+</script>
 </body>
 </html>
